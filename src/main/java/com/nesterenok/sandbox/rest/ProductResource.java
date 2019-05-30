@@ -1,17 +1,12 @@
 package com.nesterenok.sandbox.rest;
 
-import static org.springframework.http.HttpStatus.OK;
-
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import com.nesterenok.sandbox.api.Product;
+import io.swagger.annotations.Api;
 
-@RestController(value = "/product")
-public class ProductResource {
+@Api
+@RepositoryRestResource(collectionResourceRel = "products", path = "products")
+public interface ProductResource extends PagingAndSortingRepository<Product, Long> {
 
-    @GetMapping
-    public ResponseEntity<?> getProduct() {
-        return new ResponseEntity<>(Product.builder().title("Egg").amount(5).build(), OK);
-    }
 }

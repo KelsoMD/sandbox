@@ -1,0 +1,24 @@
+spring.datasource:
+  username: sandboxapp
+  password: 12345678
+  driver-class-name: org.postgresql.Driver
+  type: com.zaxxer.hikari.HikariDataSource
+  url: jdbc:postgresql://localhost:5432/sandbox
+  hikari:
+    data-source-properties:
+      cachePrepStmts: true
+      prepStmtCacheSize: 250
+      prepStmtCacheSqlLimit: 2048
+      useServerPrepStmts: true
+      useLocalSessionState: true
+      useLocalTransactionState: true
+      rewriteBatchedStatements: true
+      cacheResultSetMetadata: true
+      cacheServerConfiguration: true
+      elideSetAutoCommits: true
+      maintainTimeStats: false
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
