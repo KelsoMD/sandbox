@@ -1,9 +1,11 @@
-package com.nesterenok.sandbox.api;
+package com.nesterenok.sandbox.core.entity;
 
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,13 +20,14 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Product {
+public class Receipt {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     private String title;
-    private long amount;
-    private String trademark;
+
+    @ManyToMany(targetEntity = Product.class)
+    private Set<Product> products;
 }
